@@ -13,6 +13,7 @@
     "test-ct-update": "playwright test --update-snapshots -c playwright-ct.config.ts"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1"

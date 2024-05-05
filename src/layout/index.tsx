@@ -1,16 +1,21 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import Tabs from '../components/Tabs'
-import getBackgroundColor from '../utils/getBackgroundColor'
+import { Outlet } from 'react-router-dom'
+import { useState } from 'react'
+import Sidebar from '../components/Sidebar'
+import Icon from '../components/Icon'
 
 const Layout = () => {
-  const location = useLocation()
-  const backgroundColor = getBackgroundColor(location)
+  const [open, setOpen] = useState(false)
 
   return (
-    <div
-      className={`grid h-screen w-screen grid-rows-[80px_auto] text-white  ${backgroundColor}`}
-    >
-      <Tabs />
+    <div className='h-screen w-screen p-8'>
+      <Sidebar open={open} setOpen={setOpen} />
+      <button
+        className='absolute text-3xl'
+        type='button'
+        onClick={() => setOpen(true)}
+      >
+        <Icon iconText='menu' />
+      </button>
       <Outlet />
     </div>
   )

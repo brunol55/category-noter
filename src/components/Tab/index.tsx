@@ -1,20 +1,24 @@
 import { Link } from 'react-router-dom'
+import Icon from '../Icon'
 
 const Tab = ({
-  className,
-  icon,
-  path,
+  text,
+  iconText,
+  path
 }: {
-  className: string
-  icon: string
+  text: string
+  iconText: string
   path: string
 }) => {
   return (
     <Link
       to={path}
-      className={`material-symbols-outlined flex flex-grow cursor-pointer items-center justify-center ${className} text-2xl md:text-5xl`}
+      className={` flex flex-grow cursor-pointer items-center justify-start`}
     >
-      {icon}
+      <div className='mr-2 text-5xl'>
+        <Icon iconText={iconText} />
+      </div>
+      <div className='text-2xl'>{text}</div>
     </Link>
   )
 }
