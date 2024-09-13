@@ -1,5 +1,10 @@
 import { Dispatch, Fragment, SetStateAction } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import {
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild
+} from '@headlessui/react'
 import Tabs from '../Tabs'
 
 const Sidebar = ({
@@ -12,7 +17,7 @@ const Sidebar = ({
   return (
     <Transition show={open} as={Fragment}>
       <Dialog onClose={setOpen}>
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter='ease-in-out duration-500'
           enterFrom='opacity-0'
@@ -22,11 +27,11 @@ const Sidebar = ({
           leaveTo='opacity-0'
         >
           <div className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
-        </Transition.Child>
+        </TransitionChild>
 
         <div className='fixed inset-0 overflow-hidden'>
           <div className='flex h-full max-w-full'>
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter='transform transition ease-in-out duration-500 sm:duration-700'
               enterFrom='-translate-x-full'
@@ -35,10 +40,10 @@ const Sidebar = ({
               leaveFrom='translate-x-0'
               leaveTo='-translate-x-full'
             >
-              <Dialog.Panel className='w-full max-w-xs bg-white px-4 py-6 shadow-xl'>
-                <Tabs />
-              </Dialog.Panel>
-            </Transition.Child>
+              <DialogPanel className='w-full max-w-xs bg-white px-4 py-6 shadow-xl'>
+                <Tabs setOpen={setOpen} />
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </div>
       </Dialog>
